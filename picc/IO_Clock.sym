@@ -1,0 +1,611 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PACKED_MEMORY.P2
+004-005 @READ_PACKED_MEMORY.P3
+004-005 @WRITE_PROGRAM_MEMORY8.P4
+006-007 @READ_PACKED_MEMORY.P1
+006-007 @WRITE_PACKED_MEMORY.P2
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+024     @CURRENT_TASK
+025-026 disp
+027     sec
+028     min
+029     hour
+02A-030 @TASKINFO1_2_2_0_0
+031-037 @TASKINFO2_2_2_0_0
+038-03E @TASKINFO3_2_2_0_0
+03F     writeSlave.addr
+03F     MAIN.@SCRATCH1
+03F     @PSTRINGC7_115200_116_117.@SCRATCH1
+040     writeSlave.pos
+040     @PSTRINGC7_115200_116_117.@SCRATCH2
+041     writeSlave.dat
+041     @PSTRINGC7_115200_116_117.@SCRATCH3
+050     readSlave.addr
+050     task_1.@SCRATCH1
+050     task_3.@SCRATCH1
+051     readSlave.pos
+051     task_3.@SCRATCH2
+052     shiftOut.num
+052     readSlave.result
+053     shiftOut.point
+053     @I2C_READU_1.P1
+053     readSlave.@SCRATCH1
+054     @I2C_WRITEU_1.P1
+054     shiftOut.i
+055     shiftOut.@SCRATCH1
+056     BCD.num
+111.6   C1OUT
+113.6   C2OUT
+191-192 @WRITE_PROGRAM_MEMORY8.P1
+191-192 @READ_PROGRAM_MEMORY8.P2
+291     CCP_1_LOW
+291     CCP_1
+292     CCP_1_HIGH
+
+ROM Allocation:
+000003  @const634.call
+00000A  @I2C_WRITEU_1
+00001E  readSlave
+000038  @I2C_READU_1
+000059  task_1
+000075  task_2
+00007C  shiftOut
+000086  BCD
+0000F7  task_3
+00013A  @const632.call
+000140  @PSTRINGC7_115200_116_117
+000191  writeSlave
+0001A6  MAIN
+0001A6  @cinit1
+0001CC  @cinit2
+
+Project Directory:
+    C:\Users\diaz-\OneDrive\Documents\PICC\IO_Clock\
+
+Project Files:
+    IO_Clock.c                                              [12-may.-17 18:47  CRC=1EE90A81]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\devices\16F1823.h [12-nov.-13 14:35  CRC=F3342673]
+
+Source signature=05515767
+
+Units:
+    IO_Clock (main)
+
+Compiler Settings:
+    Processor:      PIC16F1823
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+
+Task Info:
+    Ticks: 100 ns
+    Cycle: 2, ms
+
+Tasks:
+    task_1
+    task_2
+    task_3
+
+Task Schedule:
+      1, ms  624:task_1
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  626:task_2
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  624:task_1
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+      1, ms  628:task_3
+    Sync to next 2, ms
+
+Output Files:
+    XREF file:   IO_Clock.xsym
+    Errors:      IO_Clock.err
+    Ext Symbols: IO_Clock.esym
+    INHX8:       IO_Clock.hex
+    Symbols:     IO_Clock.sym
+    List:        IO_Clock.lst
+    Debug/COFF:  IO_Clock.cof
+    Project:     IO_Clock.ccspjt
+    Call Tree:   IO_Clock.tre
+    Statistics:  IO_Clock.STA

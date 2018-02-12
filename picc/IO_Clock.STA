@@ -1,0 +1,56 @@
+
+ROM used:   609/2048 (30%)
+            609/2048 (30%) including unused fragments
+
+            0.6 Average locations per line
+            9.5 Average locations per statement
+
+RAM used:   33/128 (26%) at main() level
+            71/128 (55%) worst case
+
+Stack used: 5 worst case (2 in main + 3 for interrupts)
+Stack size: 16
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  181    64 100  IO_Clock.c
+  794     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\devices\16F1823.h
+----- -----
+  975    64 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     20   3    1             @I2C_WRITEU_1
+ Inline         1             @I2C_READU_1
+0     59  10    4   228  3.5  readSlave
+0     21   3    3   114  2.2  writeSlave
+ Inline         1   371  3.7  BCD
+0    123  20    3   552  7.3  shiftOut
+0     28   5    1   123  2.6  task_1
+0      7   1    0     3  0.0  task_2
+0     67  11    2   362  3.3  task_3
+0    187  31    1   313  3.1  MAIN
+0      6   1    0             @const632
+0     81  13    3             @PSTRINGC7_115200_116_117
+0      7   1    0             @const634
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               8
+    Statements              64
+    Comments                167
+    Volume (V)              3180
+    Difficulty (D)          25.6
+    Effort to implement (E) 81468
+    Time to implement (T)   1 hours, 15 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   13
+    Maintainability (MI)    142
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  0  
+00003-007FF   606  1439  
+
+
+

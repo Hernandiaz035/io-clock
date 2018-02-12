@@ -1,0 +1,180 @@
+#include <16F1823.h>
+#DEVICE ADC=8
+
+#FUSES NOWDT NOWRT NOLVP NOCPD NOPROTECT 
+#FUSES MCLR PUT INTRC_IO NOBROWNOUT 
+#use delay(clock=8MHz)
+
+#use fast_io(a)
+#use fast_io(c)
+
+#USE RS232(baud = 115200, STREAM = UART1, xmit=PIN_C4, rcv=PIN_C5)
+#use i2c(master, sda=PIN_C1, scl=PIN_C0 , FORCE_HW , FAST=100000)
+
+#DEFINE SH_CLK PIN_A1
+#DEFINE SH_LATCH PIN_A0
+#DEFINE SH_DATA PIN_A2
+
+#use rtos(timer=0,minor_cycle=2ms)
+
+int8 readSlave(int8 addr , int8 pos){
+   int8 result = 0;
+   
+   i2c_start();
+   i2c_write(addr);
+   i2c_write(pos);
+   i2c_stop();
+   
+   i2c_start();
+   i2c_write(addr+1);
+   result = i2c_read(0);
+   i2c_stop();
+   
+   return result;
+}
+
+void writeSlave(int8 addr , int8 pos , int8 dat)
+{
+   i2c_start();
+   i2c_write(addr);
+   i2c_write(pos);
+   i2c_write(dat);
+   i2c_stop();
+}
+
+int8 BCD(int8 num){
+    switch (num){
+        case 0:
+            return 0b00000011;
+        case 1:
+            return 0b10011111;
+        case 2:
+            return 0b00100101;
+        case 3:
+            return 0b00001101;
+        case 4:
+            return 0b10011001;
+        case 5:
+            return 0b01001001;
+        case 6:
+            return 0b01000001;
+        case 7:
+            return 0b00011111;
+        case 8:
+            return 0b00000001;
+        case 9:
+            return 0b00001001;
+        default:
+            return 0b11111101;
+    }
+}
+
+int16 disp = 0;
+
+void shiftOut(int8 num, BOOLEAN point){
+    output_low(SH_LATCH);
+    output_low(SH_CLK);
+    output_low(SH_DATA);
+    
+    disp = BCD(num & 0x0F);
+    disp &= ~point;
+    disp <<= 8;
+    num &= 0xF0;
+    num >>= 0;
+    disp |= (num>>4);
+    
+    //delay_us(5);
+    for (int8 i = 0; i < 16; i++){
+        output_bit(SH_DATA , disp & 1);
+        //delay_us(5);
+        output_high(SH_CLK);
+        //delay_us(5);
+        output_low(SH_CLK);
+        //delay_us(5);
+        
+        disp >>= 1;
+    }
+    output_high(SH_LATCH);
+    //delay_us(5);
+    output_low(SH_LATCH);
+}
+
+//============================================================================
+//============================================================================
+//============================================================================
+
+int8 sec = 0,
+    min = 0xFF,
+    hour = 0xFF/*,
+    day = 0,
+    month = 0,
+    year = 0*/;
+
+#task(rate=250ms,max=1ms)
+void task_1()
+{
+   sec = readSlave(0xD0 , 0x00);
+   min = readSlave(0xD0 , 0x01);
+   hour = readSlave(0xD0 , 0x02) & 0b00111111;
+   
+   /*day = readSlave(0xD0 , 0x04);
+   month = readSlave(0xD0 , 0x05);
+   year = readSlave(0xD0 , 0x06);*/
+}
+
+#task(rate=500ms,max=1ms)
+void task_2()
+{
+   //fprintf(uart1,"%02X : %02X : %02X\t\t" ,hour,min,sec);
+   //fprintf(uart1,"%02X / %02X / 20%02X\r\n" ,day,month,year);
+}
+
+#task(rate=2ms,max=1ms)
+void task_3()
+{
+    shiftOut((((hour>>4) & 0x0F) | 0b10000000) , False);
+    rtos_yield();
+    
+    shiftOut(((hour & 0x0F) | 0b01000000) , bit_test(sec,0));
+    rtos_yield();
+    
+    shiftOut((((min>>4) & 0x0F) | 0b00100000) , False);
+    rtos_yield();
+    
+    shiftOut(((min & 0x0F) | (0b00010000)) , False);
+    //rtos_yield();
+}
+
+void main() 
+{
+   setup_oscillator(OSC_8MHZ);
+   
+   delay_us(20);
+   
+   //setup_timer_2(T2_DIV_BY_1,224,1);   //CONFIG FRECUENCIA
+   //setup_ccp1(CCP_PWM);                //CONFIG COMO PWM
+   //set_pwm1_duty(x);
+   
+   set_tris_a(0x00);
+   set_tris_c(0x00);
+
+   output_float(PIN_C0);
+   output_float(PIN_C1);
+   
+   fprintf(uart1,"INICIO!!!\r\n");
+   
+   if (bit_test(readSlave(0xD0,0x00) , 7)==1){
+        writeSlave(0xD0 , 0x00 , 0x00);
+   }
+   
+   /*writeSlave(0xD0,0x00,0x00);
+   writeSlave(0xD0,0x01,0x28);
+   writeSlave(0xD0,0x02,0x06);
+   
+   writeSlave(0xD0,0x03,0x04);
+   writeSlave(0xD0,0x04,0x12);
+   writeSlave(0xD0,0x05,0x05);
+   writeSlave(0xD0,0x06,0x17);*/
+   
+   rtos_run ();
+}

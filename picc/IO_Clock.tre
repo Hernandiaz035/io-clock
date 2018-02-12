@@ -1,0 +1,32 @@
+ÀÄIO_Clock
+   ÃÄMAIN  0/187  Ram=1
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄ@PSTRINGC7_115200_116_117  0/81  Ram=3
+   ³  ÃÄreadSlave  0/59  Ram=4
+   ³  ³  ÃÄ@I2C_WRITEU_1  0/20  Ram=1
+   ³  ³  ÃÄ@I2C_WRITEU_1  0/20  Ram=1
+   ³  ³  ÃÄ@I2C_WRITEU_1  0/20  Ram=1
+   ³  ³  ÀÄ@I2C_READU_1  (Inline)  Ram=1
+   ³  ÃÄwriteSlave  0/21  Ram=3
+   ³  ³  ÃÄ@I2C_WRITEU_1  0/20  Ram=1
+   ³  ³  ÃÄ@I2C_WRITEU_1  0/20  Ram=1
+   ³  ³  ÀÄ@I2C_WRITEU_1  0/20  Ram=1
+   ³  ÃÄ@const634  0/7  Ram=0
+   ³  ÀÄ@const634  0/7  Ram=0
+   ÃÄtask_1  0/28  Ram=1
+   ³  ÃÄreadSlave  0/59  Ram=4
+   ³  ³  ÀÄ*
+   ³  ÃÄreadSlave  0/59  Ram=4
+   ³  ³  ÀÄ*
+   ³  ÀÄreadSlave  0/59  Ram=4
+   ³     ÀÄ*
+   ÃÄtask_2  0/7  Ram=0
+   ÀÄtask_3  0/67  Ram=2
+      ÃÄshiftOut  0/123  Ram=3
+      ³  ÀÄBCD  (Inline)  Ram=1
+      ÃÄshiftOut  0/123  Ram=3
+      ³  ÀÄ*
+      ÃÄshiftOut  0/123  Ram=3
+      ³  ÀÄ*
+      ÀÄshiftOut  0/123  Ram=3
+         ÀÄ*
